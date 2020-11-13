@@ -5,11 +5,14 @@ class SingleCellWidget extends StatefulWidget {
   final String text;
   final bool isFocusedUnderline;
   final bool isShowCursor;
+  final Color color;
+  
 
   SingleCellWidget({
     this.text = "",
     this.isFocusedUnderline = false,
     this.isShowCursor = false,
+    this.color = const Color(0xff1EE3CF)
   });
 
   @override
@@ -28,16 +31,16 @@ class _SingleCellWidgetState extends State<SingleCellWidget> {
             decoration: BoxDecoration(
                 border: Border(
               bottom: BorderSide(
-                  color: widget.isFocusedUnderline ? Color(0xff00A0FF) : Color(0xffDDDDDD),
+                  color: widget.isFocusedUnderline || widget.text.toString().isNotEmpty ? widget.color : Color(0xffDDDDDD).withAlpha(150),
                   width: 2),
             )),
             child: Center(
               child: Text(
                 widget.text.toString(),
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(fontSize: 22, color: widget.color),
               ),
             )),
-        widget.isShowCursor ? CustomCursorWidget() : Container()
+        widget.isShowCursor ? CustomCursorWidget(color: widget.color,) : Container()
       ],
     );
   }

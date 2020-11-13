@@ -9,8 +9,9 @@ typedef OnComplete = void Function(String value);
 class VerifyCodeInput extends StatefulWidget {
   final OnValueChanged onValueChanged;
   final OnComplete onComplete;
+  final Color color;
 
-  VerifyCodeInput({this.onValueChanged, this.onComplete});
+  VerifyCodeInput({this.onValueChanged, this.onComplete, this.color = const Color(0xff1EE3CF)});
 
   @override
   _VerifyCodeInputState createState() => _VerifyCodeInputState();
@@ -47,6 +48,7 @@ class _VerifyCodeInputState extends State<VerifyCodeInput> {
         children: <Widget>[
           // The widget that the verification code display
           InputRowWidget(
+            color: widget.color,
             inputCode: _inputCode,
           ),
           Opacity(

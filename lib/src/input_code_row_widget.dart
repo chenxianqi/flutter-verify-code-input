@@ -3,8 +3,8 @@ import 'single_input_cell_widget.dart';
 
 class InputRowWidget extends StatefulWidget {
   final String inputCode;
-
-  InputRowWidget({this.inputCode = ""});
+  final Color color;
+  InputRowWidget({this.inputCode = "", this.color = const Color(0xff1EE3CF)});
 
   @override
   _InputRowWidgetState createState() => _InputRowWidgetState();

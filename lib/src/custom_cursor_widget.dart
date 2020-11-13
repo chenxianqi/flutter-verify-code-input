@@ -2,15 +2,17 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class CustomCursorWidget extends StatefulWidget {
+   final Color color;
   @override
   State<StatefulWidget> createState() {
     return CustomCursorWidgetState();
   }
+  CustomCursorWidget({this.color = const Color(0xff1EE3CF)});
 }
 
 class CustomCursorWidgetState extends State<CustomCursorWidget> {
   Timer _timer;
-  Color _cursorColor = Colors.blue;
+  Color _cursorColor = Color(0xff1EE3CF);
   bool _flag = false;
 
   @override
@@ -22,7 +24,7 @@ class CustomCursorWidgetState extends State<CustomCursorWidget> {
   Timer _createTimer() {
     return Timer.periodic(Duration(milliseconds: 500), (t) {
       _flag = !_flag;
-      _cursorColor = _flag ? Colors.transparent : Colors.blue;
+      _cursorColor = _flag ? Colors.transparent : widget.color;
       if (mounted) {
         setState(() {});
       }
